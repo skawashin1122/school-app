@@ -1,0 +1,19 @@
+-- USE seito_db;
+CREATE TABLE IF NOT EXISTS players (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    name VARCHAR(32) DEFAULT NULL,
+    level INT(11) DEFAULT NULL,
+    job_id INT(11) DEFAULT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS jobs (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    job_name VARCHAR(10) DEFAULT NULL,
+    vitality INT(11) DEFAULT NULL,
+    strength INT(11) DEFAULT NULL,
+    agility INT(11) DEFAULT NULL,
+    intelligence INT(11) DEFAULT NULL,
+    luck INT(11) DEFAULT NULL,
+    PRIMARY KEY (id)
+);

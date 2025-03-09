@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>振徳戦士</h1>
+    <p>{{ message }}</p>
+
+    <table>
+        {% for result in results %}
+            <tr>
+                <td>{{ result.id }}</td>
+                <td>{{ result.job_name }}</td>
+                <td>{{ result.vitality }}</td>
+                <td>{{ result.strength }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
