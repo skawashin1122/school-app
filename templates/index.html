@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Hello SQL</h1>
+    <p>{{ message }}</p>
+
+    <table>
+        {% for player in players %}
+            <tr>
+                <td>{{ player.id }}</td>
+                <td>{{ player.name }}</td>
+                <td>{{ player.job_name }}</td>
+                <td>{{ player.level }}</td>
+                <td><a href='/show/{{ player.id }}'>表示</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

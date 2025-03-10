@@ -13,33 +13,34 @@ def getConnection():
     )
 
 @app.route('/')
-def select_sql():
+def list_players():
 
     connection = getConnection()
-    message = "Hello world"
+    message = "Player一覧"
 
-    sql = "SELECT * FROM jobs"
     cursor = connection.cursor()
+    sql = "SELECT * FROM players LEFT JOIN jobs ON jobs.id = players.job_id"
     cursor.execute(sql)
-    results = cursor.fetchall()
+    players = cursor.fetchall()
 
     cursor.close()
     connection.close()
 
-    return render_template('view.html', message = message, results = results)
+    return render_template('index.html', message = message, players = players)
+    
+@app.route('/show/<int:id>')
+def show_player(id):
 
-@app.route('/job/<int:id>')
-def show_job(id):
     connection = getConnection()
-    message = "Hello Job " + str(id)
+    message = "Hello Player " + str(id)
 
     cursor = connection.cursor()
-    sql = "SELECT * FROM jobs WHERE id = %s"
+    sql = "SELECT * FROM players LEFT JOIN jobs ON jobs.id = players.job_id WHERE players.id = %s"
     cursor.execute(sql, id)
-    result = cursor.fetchone()
+    player = cursor.fetchone()
 
     cursor.close()
     connection.close()
 
-    return render_template('view_job.html', message = message, result = result)
+    return render_template('profile.html', message = message, player = player)
 
