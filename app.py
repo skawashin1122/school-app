@@ -16,31 +16,31 @@ def getConnection():
 def list_players():
 
     connection = getConnection()
-    message = "Player一覧"
+    message = "生徒一覧"
 
     cursor = connection.cursor()
-    sql = "SELECT * FROM players LEFT JOIN jobs ON jobs.id = players.job_id"
+    sql = "SELECT * FROM students LEFT JOIN schools ON students.school_id = schools.school_id"
     cursor.execute(sql)
-    players = cursor.fetchall()
+    students = cursor.fetchall()
 
     cursor.close()
     connection.close()
 
-    return render_template('index.html', message = message, players = players)
+    return render_template('index.html', message = message, students = students)
     
 @app.route('/show/<int:id>')
 def show_player(id):
 
     connection = getConnection()
-    message = "Hello Player " + str(id)
+    message = "生徒詳細： " + str(id)
 
     cursor = connection.cursor()
-    sql = "SELECT * FROM players LEFT JOIN jobs ON jobs.id = players.job_id WHERE players.id = %s"
+    sql = "SELECT * FROM students LEFT JOIN schools ON students.school_id = schools.school_id WHERE students.id = %s"
     cursor.execute(sql, id)
-    player = cursor.fetchone()
+    student = cursor.fetchone()
 
     cursor.close()
     connection.close()
 
-    return render_template('profile.html', message = message, player = player)
+    return render_template('profile.html', message = message, student = student)
 

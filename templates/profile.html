@@ -1,15 +1,26 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>Hello SQL</h1>
-    <p>{{ message }}</p>
+    <section class="page-section">
+        <h2 class="section-title">{{ message }}</h2>
 
-    <ul>
-        <li>id：{{ player.id }}</li>
-        <li>名前：{{ player.name }}</li>
-        <li>職業：{{ player.job_name }}</li>
-        <li>レベル：{{ player.level }}</li>
-    </ul>
-
-    <p><a href = "/">戻る</a></p>
-
+        <div class="student-profile">
+            <div class="profile-card">
+                <h3>{{ student.name }} さんのプロフィール</h3>
+                <ul>
+                    <li><span class="label">性別：</span>{{ student.gender }}</li>
+                    <li><span class="label">生年月日：</span>{{ student.birth }}</li>
+                    <li><span class="label">メールアドレス：</span>{{ student.email }}</li>
+                    <li><span class="label">住所：</span>{{ student.address }}</li>
+                    <li><span class="label">出身校：</span>{{ student.school_name }}</li>
+                </ul>
+                <div class="school-feature">
+                    <h4>出身校の特徴</h4>
+                    <p>{{ student.feature }}</p>
+                </div>
+                <div class="action-buttons">
+                    <a href="/" class="btn btn-return">一覧に戻る</a>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}

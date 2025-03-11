@@ -2,11 +2,32 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title>Flask - paiza</title>
-        <style>body {padding: 10px;}</style>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Information Solution</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     </head>
     <body>
-        {% block content %}
-        {% endblock %}
+        <header>
+            <div class="container">
+                <h1 class="site-title">Nichinan-Shintoku H.S</h1>
+                <nav>
+                    <ul>
+                        <li><a href="/">ホーム</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main class="container">
+            {% block content %}
+            {% endblock %}
+        </main>
+        <footer>
+            <div class="container">
+                <p>&copy; 2025 Nichinan-Shintoku High School</p>
+            </div>
+        </footer>
     </body>
 </html>

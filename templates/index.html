@@ -1,18 +1,31 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>Hello SQL</h1>
-    <p>{{ message }}</p>
+    <section class="page-section">
+        <h2 class="section-title">{{ message }}</h2>
 
-    <table>
-        {% for player in players %}
-            <tr>
-                <td>{{ player.id }}</td>
-                <td>{{ player.name }}</td>
-                <td>{{ player.job_name }}</td>
-                <td>{{ player.level }}</td>
-                <td><a href='/show/{{ player.id }}'>表示</a></td>
-            </tr>
-        {% endfor %}
-    </table>
-
+        <div class="student-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>名前</th>
+                        <th>性別</th>
+                        <th>出身校</th>
+                        <th>備考</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                        <tr>
+                            <td>{{ student.id }}</td>
+                            <td>{{ student.name }}</td>
+                            <td>{{ student.gender }}</td>
+                            <td>{{ student.school_name }}</td>
+                            <td><a href='/show/{{ student.id }}' class="btn btn-detail">詳細</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
 {% endblock %}
