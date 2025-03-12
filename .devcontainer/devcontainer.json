@@ -2,7 +2,9 @@
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   "features": {
     "ghcr.io/devcontainers/features/mysql:1": {
-      "version": "8.0"
+      "version": "8.0",
+      "port": 3306,
+      "MYSQL_ALLOW_EMPTY_PASSWORD": "true"
     }
   },
   "hostRequirements": {
@@ -10,9 +12,9 @@
   },
   "waitFor": "onCreateCommand",
   "updateContentCommand": "pip install -r requirements.txt",
-  "postCreateCommand": "sleep 5",
+  "postCreateCommand": "sleep 10 && sudo service mysql restart",
   "postAttachCommand": {
-    "server": "flask --debug run"
+    "server": "sudo service mysql restart && flask --debug run"
   },
   "portsAttributes": {
     "5000": {
