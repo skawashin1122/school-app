@@ -6,8 +6,8 @@ def getConnection():
     return pymysql.connect(
         host='localhost',
         db='seito_db',
-        user='kawano',
-        password='Kshin1122',
+        user='skawano',
+        password='Passw0rd',
         charset='utf8',
         cursorclass=pymysql.cursors.DictCursor
     )

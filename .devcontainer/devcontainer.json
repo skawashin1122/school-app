@@ -1,11 +1,19 @@
 {
   "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+    "ghcr.io/devcontainers/features/mysql:1": {
+      "version": "8.0",
+      "host": "0.0.0.0",
+      "port": 3306,
+      "MYSQL_ALLOW_EMPTY_PASSWORD": "true"
+    }
+  },
   "hostRequirements": {
     "cpus": 4
   },
   "waitFor": "onCreateCommand",
   "updateContentCommand": "pip install -r requirements.txt",
-  "postCreateCommand": "",
+  "postCreateCommand": "sleep 5",
   "postAttachCommand": {
     "server": "flask --debug run"
   },
@@ -13,6 +21,10 @@
     "5000": {
       "label": "Application",
       "onAutoForward": "openPreview"
+    },
+    "3306": {
+      "label": "MySQL",
+      "onAutoForward": "silent"
     }
   },
   "customizations": {
@@ -23,9 +35,10 @@
     },
     "vscode": {
       "extensions": [
-        "ms-python.python"
+        "ms-python.python",
+        "ms-mysql.mysql"
       ]
     }
   },
-  "forwardPorts": [5000]
+  "forwardPorts": [5000, 3306]
 }
