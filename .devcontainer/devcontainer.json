@@ -12,10 +12,8 @@
   },
   "waitFor": "onCreateCommand",
   "updateContentCommand": "pip install -r requirements.txt",
-  "postCreateCommand": "sleep 10 && sudo service mysql restart",
-  "postAttachCommand": {
-    "server": "flask --debug run"
-  },
+  "postCreateCommand": "sudo service mysql start",
+  "postAttachCommand": "sudo service mysql start && flask --debug run --host=0.0.0.0",
   "portsAttributes": {
     "5000": {
       "label": "Application",
