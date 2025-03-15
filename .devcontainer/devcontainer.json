@@ -3,7 +3,6 @@
   "features": {
     "ghcr.io/devcontainers/features/mysql:1": {
       "version": "8.0",
-      "host": "0.0.0.0",
       "port": 3306,
       "MYSQL_ALLOW_EMPTY_PASSWORD": "true"
     }
@@ -13,7 +12,7 @@
   },
   "waitFor": "onCreateCommand",
   "updateContentCommand": "pip install -r requirements.txt",
-  "postCreateCommand": "sleep 5",
+  "postCreateCommand": "sleep 10 && sudo service mysql restart",
   "postAttachCommand": {
     "server": "flask --debug run"
   },
